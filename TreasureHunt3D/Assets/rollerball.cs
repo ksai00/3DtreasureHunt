@@ -4,6 +4,7 @@ using System.Collections;
 public class rollerball : MonoBehaviour {
 	Rigidbody ourrigidbody;
 	public float velocity;
+	public float jumpforce;
 	// Use this for initialization
 	void Start () {
 		ourrigidbody = GetComponent<Rigidbody> ();
@@ -23,6 +24,9 @@ public class rollerball : MonoBehaviour {
 		}
 		if (Input.GetKey (KeyCode.D)) {
 			ourrigidbody.velocity += velocity * Vector3.right;
+		}
+		if (gameObject.tag == "Player"&& Input.GetKeyDown(KeyCode.Space)) {
+			ourrigidbody.AddForce (jumpforce * Vector3.up);
 		}
 	}
 }
